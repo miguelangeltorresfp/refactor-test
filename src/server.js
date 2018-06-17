@@ -1,16 +1,27 @@
-var translate = require('./translator')
+"use strict";
 
-var text = "quiero trabajar con los mejores"
-var targetLang = 'en'
+const translate = require('./translator');
+const co = require('co');
 
-console.log(translate);
+let text = "quiero trabajar con los mejores";
+let targetLang = 'en';
 
-translate.translateText(text, targetLang, function (err, result) {
-
-  if (err) {
-    next(err);
-    return;
-  }
-  console.log(result);
-
+/*
+* co libray which is a wrapper around promises and generators
+* https://github.com/tj/co
+*/
+co(function *(){
+	try {
+		let result = yield translate.translateText(text, targetLang);
+		console.log(result[0]);
+	} catch (err) {
+    	console.error(err.message); // "boom"
+	}
+}).catch( (err) => {
+	console.log(err);
 });
+
+
+
+
+

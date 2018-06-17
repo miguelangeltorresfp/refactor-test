@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/gelito/refactor-test#readme",
   "dependencies": {
-    "@google-cloud/translate": "^1.1.0"
+    "@google-cloud/translate": "1.1.0"
   }
 }
